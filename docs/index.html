@@ -3,32 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Brief: Machine Learning for Quantum State Tomography (ML-QST)</title>
+    <title>Machine Learning for Quantum State Tomography</title>
+
     <style>
-        body {font-family: Georgia, serif; background:#fdfdfd; color:#222; line-height:1.75; max-width:960px; margin:40px auto; padding:20px 40px;}
-        h1 {text-align:center; color:#0d3b66; font-size:28px; margin-bottom:8px;}
-        .date {text-align:center; color:#666; font-style:italic; margin-bottom:50px;}
-        h2 {color:#0d3b66; border-bottom:3px solid #c8d8eb; padding-bottom:8px; margin-top:60px;}
-        h3 {color:#1a5fb4; margin-top:35px;}
-        p, li {text-align:justify; margin:14px 0;}
-        ul {padding-left:20px;}
-        table {width:100%; border-collapse:collapse; margin:40px 0; background:white; box-shadow:0 4px 16px rgba(0,0,0,0.07);}
-        th {background:#e6f0fa; padding:14px; text-align:left; color:#0d3b66; font-weight:bold;}
-        td {padding:14px; border-bottom:1px solid #eee;}
-        .prereq {background:#f8fbff; border-left:5px solid #1a73e8; padding:18px; margin:35px 0; border-radius:0 10px 10px 0;}
-        .video {text-align:center; margin:40px 0; padding:30px; background:white; border-radius:12px; box-shadow:0 5px 18px rgba(0,0,0,0.08);}
-        .video iframe {width:100%; max-width:780px; height:440px; border:none; border-radius:10px;}
-        .footer {text-align:center; margin-top:100px; color:#0d3b66; font-size:1.3em; font-weight:bold;}
-        @media (max-width:768px){.video iframe{height:300px;}}
+        body {
+            font-family: Georgia, serif;
+            background: #fafafa;
+            color: #1e1e1e;
+            line-height: 1.7;
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 20px 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #1d3557;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #1d3557;
+            border-bottom: 3px solid #d9e4f2;
+            padding-bottom: 8px;
+            margin-top: 60px;
+        }
+        h3 {
+            color: #457b9d;
+            margin-top: 35px;
+        }
+        p, li {
+            text-align: justify;
+            margin: 14px 0;
+        }
+        ul { padding-left: 20px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: #ffffff;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+        th {
+            background: #e8f1fa;
+            padding: 14px;
+            text-align: left;
+            color: #1d3557;
+            font-weight: bold;
+            border-bottom: 1px solid #d0d7e2;
+        }
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #ececec;
+        }
+
+        .prereq {
+            background: #f3f7fc;
+            border-left: 5px solid #457b9d;
+            padding: 18px;
+            margin: 35px 0;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.98em;
+        }
+
+        .video {
+            text-align: center;
+            margin: 40px 0;
+            padding: 28px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+        .video iframe {
+            width: 100%;
+            max-width: 780px;
+            height: 440px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .timeline {
+            margin: 40px 0;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .refs {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .video iframe { height: 300px; }
+        }
     </style>
 </head>
+
 <body>
 
-<h1>Project Brief: Machine Learning for Quantum State Tomography (ML-QST)</h1>
-<p class="date">October 2025</p>
+<h1>Machine Learning for Quantum State Tomography</h1>
 
-<h2>1 Project Overview</h2>
-<p>Quantum State Tomography (QST) is the essential process of reconstructing the density matrix ρ of an unknown quantum state from experimental measurements. While fundamental, conventional QST suffers from the curse of dimensionality, requiring an exponentially growing number of measurements and resources as the number of qubits N increases.</p>
+<h2>1 Overview</h2>
+<p>
+Quantum State Tomography reconstructs the density matrix ρ of an unknown quantum state from measurement data. The number of parameters grows as 4<sup>N</sup> for an N qubit system. This makes full state tomography impractical for systems larger than about twelve qubits on current noisy hardware.
+</p>
+
+<p>
+Modern approaches such as Classical Shadows, compressed sensing and neural network based surrogate models make it possible to estimate important properties of structured quantum states with far fewer measurements. This project develops scalable and noise aware ML based tomography pipelines suitable for realistic quantum experiments with a focus on efficiency, interpretability and robustness.
+</p>
+
+<!-- <div class="video">
+    <iframe src="https://www.youtube.com/embed/JpJZmi-JRGY?rel=0&modestbranding=1"
+            title="What is Quantum State Tomography?" allowfullscreen></iframe>
+</div> -->
 
 <div class="video">
     <iframe src="https://www.youtube.com/embed/JpJZmi-JRGY?rel=0"
@@ -39,61 +131,126 @@
 </div>
 
 
-
-<p>This project focuses on using modern Machine Learning techniques (deep learning and neuromorphic computing) to achieve highly efficient, scalable and real-time Quantum State Tomography. The goal is to move beyond conventional methods and enable state certification on NISQ devices and future fault-tolerant quantum computers.</p>
-
 <div class="prereq">
-    <strong>Recommended free prerequisites</strong><br>
-    IBM Quantum: <a href="https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information" target="_blank">Basics of Quantum Information</a> + 
-    <a href="https://quantum.cloud.ibm.com/learning/en/courses/general-formulation-of-quantum-information" target="_blank">General Formulation</a><br>
-    For Track 3 (Neuromorphic): <a href="https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/" target="_blank">MIT 9.40 Introduction to Neural Computation</a> (covers LIF neurons and energy-based models)
+    <strong>Suggested Background Reading</strong><br>
+    <a href="https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information" target="_blank">
+        IBM Quantum Basics of Quantum Information</a><br>
+    <a href="https://quantum.cloud.ibm.com/learning/en/courses/general-formulation-of-quantum-information" target="_blank">
+        IBM Quantum General Formulation of Quantum Information</a><br>
+    <a href="https://ocw.mit.edu/courses/9-40-introduction-to-neural-computation-spring-2018/" target="_blank">
+        MIT 9.40 Introduction to Neural Computation</a>
 </div>
 
-<h2>2 Key Applications and Impact</h2>
-<p>The developed ML-QST methods will have immediate applications across the quantum ecosystem</p>
+<h2>2 Applications</h2>
 <ul>
-    <li>Quantum Algorithm Verification efficiently certifying circuit outputs</li>
-    <li>Qubit Characterisation rapid measurement of purity, entanglement and fidelity</li>
-    <li>Quantum Sensing precise parameter estimation via tiny changes in ρ</li>
-    <li>Quantum Error Suppression real-time fidelity monitoring during computation</li>
-    <li>Neural Quantum Interface compact classical representation of quantum states</li>
+    <li><strong>Quantum Algorithm Verification</strong>  Verification of circuit outputs for VQE QAOA and peaked quantum circuit tasks</li>
+    <li><strong>Qubit Characterisation</strong>  Extraction of purity coherence and entanglement properties</li>
+    <li><strong>Quantum Sensing</strong>  Estimation of small parameter shifts from reconstructed state properties</li>
+    <li><strong>Quantum Error Mitigation and Control</strong>  Fast approximate fidelity estimates for feedback based correction</li>
+    <li><strong>Neural Quantum Interface</strong>  Approximate latent representations of structured quantum states for efficient classical post processing</li>
 </ul>
 
-<h2>3 Technical Focus Tracks</h2>
+<h2>3 Technical Tracks</h2>
 
-<h3>3.1 Track 1: Neural Shadow Tomography (NSQST)</h3>
-<p>Implement and optimise Neural-Shadow QST using Classical Shadows combined with neural networks. Deliverable: Python/Julia package capable of high-fidelity tomography of up to 20 qubits with very few measurements.</p>
+<h3>Track 1  Neural Shadow Tomography</h3>
+<p>
+Neural models operate on Classical Shadow measurement data to improve robustness under noise and to estimate nonlinear observables with reduced sample requirements.
+</p>
+<p><strong>Output</strong>  A Python or Julia library for shadow assisted ML tomography for mid scale systems</p>
 
-<h3>3.2 Track 2: FPGA Accelerated Tomography</h3>
-<p>Quantise a trained neural model and implement it on FPGA to achieve sub-millisecond inference on streaming measurement data. Deliverable: low-latency hardware core.</p>
+<h3>Track 2  FPGA Accelerated Tomography</h3>
+<p>
+This track explores hardware acceleration using quantised models deployed through Vitis HLS Intel HLS or custom Verilog implementations.
+</p>
+<p><strong>Output</strong>  A synthesizable and low latency hardware block for state property estimation</p>
 
-<h3>3.3 Track 3: Neuromorphic SNN for QST</h3>
-<p>Develop a Spiking Neural Network that maps measurement outcomes to state parameters, exploiting event-driven computation. Deliverable: prototype showing clear energy advantage over standard DNNs.</p>
+<h3>Track 3  Neuromorphic SNN Tomography</h3>
+<p>
+This track studies spiking encodings of measurement data and surrogate gradient training for energy efficient inference.
+</p>
+<p><strong>Output</strong>  A prototype SNN showing reduced energy per inference compared to a classical network</p>
 
-<h2>4 Software Requirements by Track</h2>
+<h2>4 Project Timeline</h2>
+<div class="timeline">
+    <table>
+        <tr><th>Week</th><th>Dates</th><th>Focus</th></tr>
 
+        <tr>
+            <td>Week 0</td>
+            <td>1 Dec  7 Dec</td>
+            <td>Theory review and completion of prerequisites including Classical Shadows tomography methods neuromorphic basics and baseline QST algorithms</td>
+        </tr>
+
+        <tr>
+            <td>Week 1</td>
+            <td>8 Dec  14 Dec</td>
+            <td>Environment setup and creation of measurement datasets using SIC POVM or Pauli projective measurements with either random quantum circuits or realistic algorithm based data generation using tools such as KetGPT</td>
+        </tr>
+
+        <tr>
+            <td>Week 2</td>
+            <td>15 Dec  21 Dec</td>
+            <td>Implementation of baseline methods including linear inversion MLE and Classical Shadows</td>
+        </tr>
+
+        <tr>
+            <td>Week 3</td>
+            <td>22 Dec  28 Dec</td>
+            <td>Exploration and construction of model architectures for the selected track including design choice justification and initial validation</td>
+        </tr>
+
+        <tr>
+            <td>Week 4</td>
+            <td>29 Dec  4 Jan</td>
+            <td>Training hyperparameter tuning robustness testing and comparison under simulated noise</td>
+        </tr>
+
+        <tr>
+            <td>Week 5</td>
+            <td>5 Jan</td>
+            <td>Result analysis documentation model packaging and final discussion</td>
+        </tr>
+
+    </table>
+</div>
+
+<h2>5 Software Requirements</h2>
 <table>
     <tr><th>Track</th><th>Required Tools</th></tr>
+
     <tr>
-        <td>All tracks</td>
-        <td>Python 3.10+, PyTorch 2.x, NumPy<br>Qiskit / Cirq / Pennylane (for simulation)</td>
+        <td>All Tracks</td>
+        <td>Python 3.10 or later PyTorch NumPy Qiskit Cirq or PennyLane</td>
     </tr>
+
     <tr>
-        <td>Track 1 Neural Shadow</td>
-        <td>PyTorch <br>Optional: Julia + Yao.jl for fast shadow processing</td>
+        <td>Track 1</td>
+        <td>PyTorch Optional Julia and Yao</td>
     </tr>
+
     <tr>
-        <td>Track 2 FPGA</td>
-        <td>Vitis HLS or Intel HLS, Verilog</td>
+        <td>Track 2</td>
+        <td>Vitis HLS Intel HLS Verilog </td>
     </tr>
+
     <tr>
-        <td>Track 3 Neuromorphic SNN</td>
-        <td>snnTorch, Brian2<br>Optional: Norse, Lava framework</td>
+        <td>Track 3</td>
+        <td>snnTorch(preferred) Norse Brian2 Optional Lava</td>
     </tr>
+
 </table>
 
-<div class="footer">
-    Machine Learning for Quantum State Tomography • October 2025
+<h2>6 References</h2>
+<div class="refs">
+    <ul>
+        <li><a href="https://pennylane.ai/qml/demos/tutorial_classical_shadows" target="_blank">PennyLane Demo</a></li>
+        <li><a href="https://arxiv.org/abs/2002.08953" target="_blank">Classical Shadows for Quantum Tomography and Machine Learning</a></li>
+        <li><a href="https://arxiv.org/abs/2507.23007" target="_blank">Machine Learning Enhanced Quantum Tomography</a></li>
+        <li><a href="https://arxiv.org/abs/2305.01078" target="_blank">Neural Estimators for Shadow Based Property Prediction</a></li>
+        <li><a href="https://arxiv.org/html/2501.04327v1" target="_blank">Advances in Classical Shadow Reconstruction</a></li>
+        <li><a href="https://repository.tudelft.nl/record/uuid:97842f9d-064f-4357-b5dd-e37ed7b34d2d" 
+               target="_blank">FPGA Based Quantum Data Processing</a></li>
+    </ul>
 </div>
 
 </body>
