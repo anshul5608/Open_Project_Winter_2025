@@ -1,0 +1,14 @@
+{
+  "state": "|i>",
+  "circuit": [
+    "H",
+    "S"
+  ],
+  "measurement_model": "pauli_projective",
+  "shots": 1000,
+  "bases": [
+    "Z",
+    "X",
+    "Y"
+  ]
+}
