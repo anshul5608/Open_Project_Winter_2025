@@ -28,28 +28,7 @@ Input: ⟨X⟩, ⟨Y⟩, ⟨Z⟩ expectation values
 
 Model: Fully connected neural network (MLP)
 
-Physics Enforcement: Cholesky decomposition
-
-𝜌
-=
-𝐿
-𝐿
-†
-T
-r
-(
-𝐿
-𝐿
-†
-)
-ρ=
-Tr(LL
-†
-)
-LL
-†
-	​
-
+Physics Enforcement: Cholesky decomposition	​
 
 This guarantees physical validity by construction.
 
@@ -88,5 +67,6 @@ The project focuses on single-qubit quantum states.
 The implementation is modular and easily extendable to higher-dimensional systems.
 
 Author
+
 
 Rathod Anshul Ram
