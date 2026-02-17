@@ -1,0 +1,170 @@
+\section{Results Appendix}
+
+\subsection{Experimental Configuration}
+
+The model was trained to reconstruct single-qubit density matrices 
+from Pauli expectation values:
+
+\[
+\langle X \rangle, \quad \langle Y \rangle, \quad \langle Z \rangle
+\]
+
+Each training sample corresponds to a randomly generated physically valid 
+single-qubit quantum state.
+
+The neural network is a fully connected multilayer perceptron (MLP) 
+that outputs parameters of a lower triangular matrix $L$. 
+The density matrix is constructed as:
+
+\[
+\rho = \frac{L L^\dagger}{\mathrm{Tr}(L L^\dagger)}
+\]
+
+This parameterization guarantees:
+
+\begin{itemize}
+    \item Hermiticity
+    \item Positive Semi-Definiteness
+    \item Unit Trace
+\end{itemize}
+
+Physical validity is therefore enforced by construction rather than post-processing.
+
+Training and evaluation were performed using a classical CPU-based pipeline.
+
+---
+
+\subsection{Evaluation Metrics}
+
+\subsubsection{Quantum Fidelity}
+
+Quantum fidelity between predicted density matrix $\rho$ and 
+true density matrix $\sigma$ is defined as:
+
+\[
+F(\rho, \sigma) =
+\left(
+\mathrm{Tr}
+\sqrt{
+\sqrt{\rho} \, \sigma \, \sqrt{\rho}
+}
+\right)^2
+\]
+
+Fidelity ranges from 0 to 1, with $F=1$ indicating identical quantum states.
+
+---
+
+\subsubsection{Trace Distance}
+
+Trace distance between $\rho$ and $\sigma$ is defined as:
+
+\[
+D(\rho, \sigma) =
+\frac{1}{2}
+\left\|
+\rho - \sigma
+\right\|_1
+\]
+
+where $\|\cdot\|_1$ denotes the trace norm.
+
+Trace distance measures distinguishability between two quantum states.
+Lower values indicate closer agreement.
+
+---
+
+\subsection{Numerical Performance Summary}
+
+\input{performance_table.tex}
+
+The model achieves high mean fidelity and low trace distance, 
+demonstrating accurate reconstruction of single-qubit quantum states.
+
+Inference latency remains sub-millisecond, 
+making the approach suitable for efficient classical post-processing 
+in hybrid quantum-classical workflows.
+
+---
+
+\subsection{Distribution Analysis}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\linewidth]{fidelity_hist.png}
+\caption{Distribution of quantum fidelity values across the evaluation dataset. 
+The concentration of values near unity indicates high reconstruction accuracy.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\linewidth]{trace_distance_hist.png}
+\caption{Distribution of trace distance values. 
+Most values cluster near zero, confirming strong agreement between predicted and true density matrices.}
+\end{figure}
+
+---
+
+\subsection{Behavioural Observations}
+
+Several important observations emerge from the experiments:
+
+\begin{itemize}
+    \item The Cholesky-based parameterization stabilizes training and prevents non-physical outputs.
+    \item Fidelity values are tightly concentrated near 1, indicating robust reconstruction.
+    \item Trace distance remains consistently low across the evaluation set.
+    \item No post-hoc projection or eigenvalue correction was required.
+\end{itemize}
+
+The enforcement of quantum mechanical constraints directly in the model 
+significantly improves training stability compared to unconstrained regression approaches.
+
+---
+
+\subsection{Scaling Considerations}
+
+For an $n$-qubit system, the Hilbert space dimension scales as:
+
+\[
+\dim(\mathcal{H}) = 2^n
+\]
+
+The density matrix contains:
+
+\[
+4^n
+\]
+
+real parameters.
+
+This exponential growth leads to:
+
+\begin{itemize}
+    \item Rapid increase in model output dimensionality
+    \item Increased dataset size requirements
+    \item Higher computational and memory cost
+\end{itemize}
+
+While the present model performs efficiently for single-qubit systems,
+extension to multi-qubit systems requires architectural refinement,
+efficient measurement schemes, and improved scalability strategies.
+
+---
+
+\subsection{Conclusion of Results}
+
+The experimental results demonstrate that a classical neural network,
+combined with physics-informed parameterization, can accurately reconstruct
+physically valid single-qubit quantum states.
+
+The approach achieves:
+
+\begin{itemize}
+    \item High reconstruction fidelity
+    \item Low trace distance
+    \item Stable optimization behaviour
+    \item Efficient inference performance
+\end{itemize}
+
+These results validate the feasibility of machine learning–based
+quantum state tomography for low-dimensional quantum systems.
