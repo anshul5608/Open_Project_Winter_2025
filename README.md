@@ -131,8 +131,7 @@ Open_Project_Winter_2025/
 ├── README.md
 ├── requirements.txt
 
-yaml
-Copy code
+**the output files are in the notebook under assignment 2 folder, so for the inconveience**
 
 Only files directly used in the project are included to ensure clarity and reproducibility.
 
@@ -145,7 +144,6 @@ Only files directly used in the project are included to ensure clarity and repro
 pip install -r requirements.txt
 
 yaml
-Copy code
 
 ---
 
@@ -154,7 +152,6 @@ Copy code
 python -m src.train
 
 yaml
-Copy code
 
 ---
 
@@ -163,7 +160,6 @@ Copy code
 python -m src.evaluate
 
 diff
-Copy code
 
 Evaluation outputs:
 
@@ -176,7 +172,6 @@ Results are stored in:
 results/
 
 yaml
-Copy code
 
 ---
 
