@@ -1,0 +1,125 @@
+\section{Final Reflection}
+
+\subsection{Overview}
+
+This project explored a machine learning approach to single-qubit Quantum State Tomography (QST) 
+using Pauli expectation values as inputs. A key design decision was the use of Cholesky 
+parameterization to enforce physical validity of reconstructed density matrices.
+
+The final results demonstrate high fidelity, low trace distance, and stable optimization behaviour.
+
+---
+
+\subsection{Scaling Limitations}
+
+While the single-qubit case is computationally lightweight, 
+scaling to multi-qubit systems introduces significant challenges.
+
+For an $n$-qubit system:
+
+\[
+\text{Hilbert space dimension} = 2^n
+\]
+
+\[
+\text{Density matrix parameters} = 4^n
+\]
+
+This exponential growth leads to:
+
+\begin{itemize}
+    \item Rapid increase in model output dimensionality
+    \item Larger training datasets required for generalization
+    \item Increased memory consumption
+    \item Longer training and evaluation times
+\end{itemize}
+
+Even for 3 qubits, the density matrix dimension becomes $8 \times 8$, 
+and the number of real parameters grows substantially.
+
+Thus, while ML-based QST is promising for low-dimensional systems, 
+direct scaling is computationally expensive.
+
+---
+
+\subsection{Impact of Physics-Informed Parameterization}
+
+One of the most important observations from this project is the stability 
+introduced by Cholesky-based reconstruction:
+
+\[
+\rho = \frac{L L^\dagger}{\mathrm{Tr}(L L^\dagger)}
+\]
+
+This approach ensures:
+
+\begin{itemize}
+    \item All predicted matrices are Hermitian
+    \item Positive semi-definiteness is guaranteed
+    \item Unit trace normalization is automatic
+\end{itemize}
+
+Without this constraint, neural networks may output non-physical matrices, 
+leading to unstable loss behaviour and unreliable evaluation metrics.
+
+The physics-informed design significantly improves robustness 
+compared to naive regression approaches.
+
+---
+
+\subsection{Observed Behaviour During Training}
+
+Several practical insights emerged:
+
+\begin{itemize}
+    \item Training converges rapidly for single-qubit systems.
+    \item Increasing hidden layer width improves performance up to saturation.
+    \item Fidelity and trace distance show consistent inverse correlation.
+    \item No post-processing correction was required due to constrained output design.
+\end{itemize}
+
+These observations confirm that embedding domain knowledge into the architecture 
+simplifies learning and improves stability.
+
+---
+
+\subsection{Limitations of the Present Work}
+
+The present implementation has several limitations:
+
+\begin{itemize}
+    \item Restricted to single-qubit states.
+    \item Synthetic noise-free datasets were used.
+    \item Pauli measurement basis only.
+    \item No experimental hardware validation.
+\end{itemize}
+
+In realistic experimental settings, measurement noise and finite sampling 
+effects would introduce additional reconstruction challenges.
+
+---
+
+\subsection{Future Directions}
+
+Future extensions of this work may include:
+
+\begin{itemize}
+    \item Extension to multi-qubit quantum systems.
+    \item Integration of Classical Shadows measurement techniques.
+    \item Transformer-based or attention-based neural architectures.
+    \item Noise-aware training for experimental datasets.
+    \item Hybrid quantum-classical optimization pipelines.
+\end{itemize}
+
+These directions may improve scalability and robustness for larger systems.
+
+---
+
+\subsection{Concluding Remarks}
+
+This project demonstrates that machine learning, when combined with 
+physics-informed constraints, provides an efficient and stable approach 
+to quantum state reconstruction for low-dimensional systems.
+
+While scalability remains a challenge, the results validate the feasibility 
+of ML-based QST as a promising direction for future quantum information research.
