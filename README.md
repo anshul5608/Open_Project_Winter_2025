@@ -123,12 +123,19 @@ All plots and numerical values are reproducible from project code and stored in 
 ## Repository Structure
 
 Open_Project_Winter_2025/
+
 ├── data/ # Generated Pauli datasets (.npy / .npz)
+
 ├── models/ # Saved trained checkpoints (.pkl / .pt)
+
 ├── notebooks/ # Cleaned Assignment 1–5 notebooks
+
 ├── src/ # Modular training, evaluation, and utilities
+
 ├── results/ # Plots and LaTeX tables
+
 ├── README.md
+
 ├── requirements.txt
 
 **the output and src files are in the notebook folder under assignment 2 folder, so for the inconveience**
