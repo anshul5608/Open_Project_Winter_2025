@@ -128,15 +128,10 @@ Open_Project_Winter_2025/
 
 ├── models/ # Saved trained checkpoints (.pkl / .pt)
 
-├── notebooks/ # Cleaned Assignment 1–5 notebooks
-
-├── src/ # Modular training, evaluation, and utilities
-
-├── results/ # Plots and LaTeX tables
+├── notebooks/ # *src and output folder are under assignment 2*
 
 ├── README.md
 
-├── requirements.txt
 
 **the output and src files are in the notebook folder under assignment 2 folder, so for the inconveience**
 as i thought it would make more sence, under assignment 2
