@@ -131,7 +131,8 @@ Open_Project_Winter_2025/
 ├── README.md
 ├── requirements.txt
 
-**the output files are in the notebook under assignment 2 folder, so for the inconveience**
+**the output and src files are in the notebook folder under assignment 2 folder, so for the inconveience**
+as i thought it would make more sence, under assignment 2
 
 Only files directly used in the project are included to ensure clarity and reproducibility.
 
